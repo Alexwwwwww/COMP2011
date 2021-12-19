@@ -1,0 +1,744 @@
+
+int main()
+{
+    cout << "Welcome to the infection simulator!" << endl;
+    cout << "Which test case do you want to run?" << endl;
+    int testCaseNumber = 0;
+    cin >> testCaseNumber;
+
+    cout << "Running test case " << testCaseNumber << "... If you do not see a complete output below, that could mean runtime errors happened (e.g. infinite recursion). Check your code carefully." << endl;
+
+    if(testCaseNumber == 1)
+    {
+        int width = 6;
+        int height = 5;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.', '.'},
+            {'p', 'p', 'p', '.', 'p', '.'},
+            {'.', 'p', '.', 'p', 'p', '.'},
+            {'p', 'p', '.', '.', '.', 'p'},
+            {'.', 'p', '.', '.', 'p', '.'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 2)
+    {
+        int width = 5;
+        int height = 6;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.'},
+            {'p', 'p', 'p', '.', 'p'},
+            {'.', 'p', '.', 'p', 'p'},
+            {'p', 'p', '.', '.', '.'},
+            {'.', 'p', '.', '.', 'p'},
+            {'p', 'p', 'p', 'p', 'p'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 3)
+    {
+        int width = 5;
+        int height = 6;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.'},
+            {'p', 'p', 'p', '.', 'p'},
+            {'.', 'p', '.', 'p', 'p'},
+            {'p', 'p', '.', '.', '.'},
+            {'.', 'p', '.', '.', 'p'},
+            {'p', 'p', 'p', 'p', 'p'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        cout << "#infected = " << infect(map, width, height, 1, 1) << endl;
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 4)
+    {
+        int width = 5;
+        int height = 6;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.'},
+            {'p', 'p', 'p', '.', 'p'},
+            {'.', 'p', '.', 'p', 'p'},
+            {'p', 'p', '.', '.', '.'},
+            {'.', 'p', '.', '.', 'p'},
+            {'p', 'p', 'p', 'p', 'p'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infect(map, width, height, 1, 1); 
+        //this test case is very similar to the previous test case
+        //the only difference is that we do not output the return value of the infect function
+        //this is to give partial credits to students who could only modify the map correctly
+        //but not getting a correct return value
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 5)
+    {
+        int width = 5;
+        int height = 6;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', '.', 'p', 'p'},
+            {'p', 'p', 'p', '.', '.'},
+            {'p', 'p', '.', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p'},
+            {'p', '.', '.', '.', '.'},
+            {'p', 'p', 'p', 'p', 'p'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        cout << "#infected = " << infect(map, width, height, 4, 5) << endl;
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 6)
+    {
+        int width = 5;
+        int height = 6;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.'},
+            {'p', 'p', 'p', '.', 'p'},
+            {'.', 'p', '.', 'p', 'p'},
+            {'p', 'p', '.', '.', '.'},
+            {'.', 'p', '.', '.', 'p'},
+            {'p', 'p', 'p', 'p', 'p'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        cout << "#infected = " << infect(map, width, height, 0, 0) << endl;
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 7)
+    {
+        int width = 5;
+        int height = 6;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.'},
+            {'p', 'p', 'p', '.', 'v'},
+            {'.', 'p', '.', 'v', 'v'},
+            {'p', 'p', '.', '.', '.'},
+            {'.', 'p', '.', '.', 'p'},
+            {'p', 'p', 'p', 'p', 'p'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        cout << "# of p = " << countCharacter(map, width, height, 'p') << endl;
+        cout << "# of v = " << countCharacter(map, width, height, 'v') << endl;
+        cout << "# of . = " << countCharacter(map, width, height, '.') << endl;
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 8)
+    {
+        int width = 8;
+        int height = 5;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.', '.', '.', 'p'},
+            {'p', 'p', 'p', 'p', 'p', '.', '.', '.'},
+            {'.', 'p', 'p', 'B', 'p', '.', '.', 'p'},
+            {'.', '.', '.', '.', 'p', 'p', '.', 'p'},
+            {'.', '.', '.', '.', 'p', '.', '.', '.'}
+        };
+        cout << "========================" << endl;
+        cout << "getProtectionLevel at (3,2) = " << getProtectionLevel(map, width, height, 3, 2) << endl;
+        cout << "getProtectionLevel at (2,2) = " << getProtectionLevel(map, width, height, 2, 2) << endl;
+        cout << "getProtectionLevel at (4,2) = " << getProtectionLevel(map, width, height, 4, 2) << endl;
+        cout << "getProtectionLevel at (3,1) = " << getProtectionLevel(map, width, height, 3, 1) << endl;
+        cout << "getProtectionLevel at (3,3) = " << getProtectionLevel(map, width, height, 3, 3) << endl;
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 9)
+    {
+        int width = 8;
+        int height = 5;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'C', '.', '.', '.', 'p'},
+            {'p', 'p', 'p', 'p', 'p', '.', '.', '.'},
+            {'.', 'p', 'A', 'B', 'p', '.', '.', 'p'},
+            {'.', '.', '.', '.', 'p', 'p', '.', 'p'},
+            {'.', '.', '.', '.', 'p', '.', '.', '.'}
+        };
+        cout << "========================" << endl;
+        cout << "getProtectionLevel at (3,2) = " << getProtectionLevel(map, width, height, 3, 2) << endl;
+        cout << "getProtectionLevel at (2,2) = " << getProtectionLevel(map, width, height, 2, 2) << endl;
+        cout << "getProtectionLevel at (4,2) = " << getProtectionLevel(map, width, height, 4, 2) << endl;
+        cout << "getProtectionLevel at (3,1) = " << getProtectionLevel(map, width, height, 3, 1) << endl;
+        cout << "getProtectionLevel at (3,3) = " << getProtectionLevel(map, width, height, 3, 3) << endl;
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 10)
+    {
+        int width = 8;
+        int height = 5;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.', '.', '.', 'p'},
+            {'p', 'p', 'p', 'p', 'p', '.', '.', '.'},
+            {'.', 'p', 'p', 'p', 'p', '.', '.', 'p'},
+            {'.', '.', '.', '.', 'p', 'p', '.', 'p'},
+            {'.', '.', '.', '.', 'p', '.', '.', '.'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithPower(map, width, height, 1, 1, 3);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 11)
+    {
+        int width = 8;
+        int height = 8;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithPower(map, width, height, 3, 3, 8);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 12)
+    {
+        int width = 8;
+        int height = 8;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'C', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithPower(map, width, height, 3, 3, 8);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 13)
+    {
+        cout << "========================" << endl;
+        cout << "random(1234, 1) = " << random(1234, 1) << endl;
+        cout << "random(1234, 2) = " << random(1234, 2) << endl;
+        cout << "random(1234, 3) = " << random(1234, 3) << endl;
+        cout << "random(1234, 4) = " << random(1234, 4) << endl;
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 14)
+    {
+        cout << "========================" << endl;
+        cout << "random(1001, 1) = " << random(1001, 1) << endl;
+        cout << "random(1001, 2) = " << random(1001, 2) << endl;
+        cout << "random(1001, 3) = " << random(1001, 3) << endl;
+        cout << "random(1001, 4) = " << random(1001, 4) << endl;
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 15)
+    {
+        int width = 8;
+        int height = 8;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithProbability(map, width, height, 4, 4, 3200, 1234);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 16)
+    {
+        int width = 8;
+        int height = 8;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', '.', '.', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithProbability(map, width, height, 4, 4, 3200, 1234);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+
+
+    //THE FOLLOWING TEST CASES WON'T BE GIVEN BEFORE THE DEADLINE
+    
+    else if(testCaseNumber == 17)
+    {
+        int width = MAX_SIZE;
+        int height = MAX_SIZE;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 18)
+    {
+        int width = 1;
+        int height = 1;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+            {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'p', '.', '.'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 19)
+    {
+        int width = 5;
+        int height = 6;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.'},
+            {'p', 'p', 'p', '.', 'p'},
+            {'.', 'p', '.', 'p', 'p'},
+            {'p', 'p', '.', '.', '.'},
+            {'.', 'p', '.', '.', 'p'},
+            {'p', 'p', 'p', 'p', 'p'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        cout << "#infected = " << infect(map, width, height, 0, 0) << endl;
+        cout << "#infected = " << infect(map, width, height, 4, 6) << endl;
+        cout << "#infected = " << infect(map, width, height, 5, 5) << endl;
+        cout << "#infected = " << infect(map, width, height, -1, 0) << endl;
+        cout << "#infected = " << infect(map, width, height, 0, -1) << endl;
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 20)
+    {
+        int width = 5;
+        int height = 1;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        cout << "#infected = " << infect(map, width, height, 2, 0) << endl;
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 21)
+    {
+        int width = 5;
+        int height = 5;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', '.', 'p', 'p'},
+            {'p', '.', 'p', '.', 'p'},
+            {'p', 'p', '.', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        cout << "#infected = " << infect(map, width, height, 2, 2) << endl;
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 22)
+    {
+        int width = MAX_SIZE;
+        int height = MAX_SIZE;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'p', 'p', 'p', '.', 'v', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'.', 'p', '.', 'v', 'v', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'.', 'p', '.', 'v', 'v', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'.', 'p', '.', 'v', 'v', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'p', 'p', '.', '.', '.', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'.', 'p', '.', '.', 'p', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'.', 'p', '.', '.', 'p', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'.', 'p', '.', '.', 'p', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'.', 'p', '.', '.', 'p', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'.', 'p', '.', '.', 'p', '.', 'p', '.', 'p', '.', 'v', 'v'},
+            {'p', 'p', 'p', 'p', 'p', '.', 'p', '.', 'p', '.', 'v', 'v'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        cout << "# of p = " << countCharacter(map, width, height, 'p') << endl;
+        cout << "# of v = " << countCharacter(map, width, height, 'v') << endl;
+        cout << "# of . = " << countCharacter(map, width, height, '.') << endl;
+        cout << "# of A = " << countCharacter(map, width, height, 'A') << endl;
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 23)
+    {
+        int width = 5;
+        int height = 5;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'E', '.', 'p'},
+            {'p', 'p', 'p', '.', 'p'},
+            {'p', 'p', 'D', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p'}
+        };
+        cout << "========================" << endl;
+        for(int i=0;i<width;i++)
+        {
+            for(int j=0;j<height;j++)
+            {
+                cout << "getProtectionLevel at (" << i << "," << j << ") = " << getProtectionLevel(map, width, height, i, j) << endl;
+            }
+        }
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 24)
+    {
+        int width = 5;
+        int height = 5;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'A', 'p', 'C', 'p'},
+            {'B', 'p', 'E', 'p', 'I'},
+            {'p', 'A', 'p', 'J', 'p'},
+            {'C', 'p', 'D', 'p', 'G'},
+            {'p', 'F', 'p', 'G', 'p'}
+        };
+        cout << "========================" << endl;
+        for(int i=0;i<width;i++)
+        {
+            for(int j=0;j<height;j++)
+            {
+                cout << "getProtectionLevel at (" << i << "," << j << ") = " << getProtectionLevel(map, width, height, i, j) << endl;
+            }
+        }
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 25)
+    {
+        int width = 8;
+        int height = 5;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', '.', '.', '.', 'p'},
+            {'p', 'p', 'p', 'p', 'p', '.', '.', '.'},
+            {'.', 'p', 'p', 'p', 'p', '.', '.', 'p'},
+            {'.', '.', '.', '.', 'p', 'p', '.', 'p'},
+            {'.', '.', '.', '.', 'p', '.', '.', '.'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithPower(map, width, height, 0, 0, 4);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 26)
+    {
+        int width = 8;
+        int height = 5;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', '.', 'p', '.'},
+            {'.', 'p', 'p', 'p', 'p', '.', 'p', 'p'},
+            {'.', '.', '.', '.', 'p', 'p', '.', 'p'},
+            {'.', '.', '.', '.', 'p', '.', 'p', '.'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithPower(map, width, height, 4, 3, 6);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 27)
+    {
+        int width = 8;
+        int height = 5;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'.', 'p', '.', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', '.', 'p', 'p'},
+            {'.', 'p', 'p', 'p', 'p', '.', 'p', '.'},
+            {'p', '.', '.', '.', 'p', 'p', '.', 'p'},
+            {'p', 'p', 'p', '.', 'p', '.', 'p', '.'}
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithPower(map, width, height, 4, 3, 9);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 28)
+    {
+        int width = 8;
+        int height = 8;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'A', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithPower(map, width, height, -1, 0, 8);
+        infectWithPower(map, width, height, 0, -1, 8);
+        infectWithPower(map, width, height, 8, 7, 8);
+        infectWithPower(map, width, height, 7, 8, 8);
+        infectWithPower(map, width, height, 0, 0, 8);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 29)
+    {
+        int width = 4;
+        int height = 4;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithPower(map, width, height, 2, 2, 9);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 30)
+    {
+        int width = 8;
+        int height = 8;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'A', 'p', 'B', 'p', 'C', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'D', 'p', 'E', 'p', 'F', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'G', 'p', 'H', 'p', 'I', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithPower(map, width, height, 4, 2, 9);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 31)
+    {
+        int width = 8;
+        int height = 8;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'A', 'p', 'B', 'p', 'B', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'D', 'p', 'E', 'p', 'F', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'A', 'p', 'H', 'p', 'I', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithPower(map, width, height, 3, 4, 9);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 32)
+    {
+        cout << "========================" << endl;
+        cout << "random(1234, 1) = " << random(1234, 1) << endl;
+        cout << "random(1234, 2) = " << random(1234, 2) << endl;
+        cout << "random(1234, 3) = " << random(1234, 3) << endl;
+        cout << "random(1234, 4) = " << random(1234, 4) << endl;
+        cout << "random(1234, 5) = " << random(1234, 5) << endl;
+        cout << "random(1234, 6) = " << random(1234, 6) << endl;
+        cout << "random(1234, 7) = " << random(1234, 7) << endl;
+        cout << "random(1234, 8) = " << random(1234, 8) << endl;
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 33)
+    {
+        cout << "========================" << endl;
+        cout << "random(2345, 1) = " << random(2345, 1) << endl;
+        cout << "random(2345, 2) = " << random(2345, 2) << endl;
+        cout << "random(2345, 3) = " << random(2345, 3) << endl;
+        cout << "random(2345, 4) = " << random(2345, 4) << endl;
+        cout << "random(2345, 5) = " << random(2345, 5) << endl;
+        cout << "random(2345, 6) = " << random(2345, 6) << endl;
+        cout << "random(2345, 7) = " << random(2345, 7) << endl;
+        cout << "random(2345, 8) = " << random(2345, 8) << endl;
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 34)
+    {
+        int width = 8;
+        int height = 8;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithProbability(map, width, height, 4, 4, 3215, 1234);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 35)
+    {
+        int width = 8;
+        int height = 8;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', '.', '.', 'p', 'p'},
+            {'p', 'p', '.', 'p', 'p', '.', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithProbability(map, width, height, 4, 4, 80, 2345);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 36)
+    {
+        int width = 8;
+        int height = 8;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'A', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithProbability(map, width, height, -1, 0, 2000, 1234);
+        infectWithProbability(map, width, height, 0, -1, 2000, 1234);
+        infectWithProbability(map, width, height, 8, 7, 2000, 1234);
+        infectWithProbability(map, width, height, 7, 8, 2000, 1234);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+    else if(testCaseNumber == 37)
+    {
+        int width = 4;
+        int height = 4;
+        char map[MAX_SIZE][MAX_SIZE] = {
+            {'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', 'p'},
+            {'p', 'p', 'p', '.'},
+            {'p', 'p', '.', 'p'},
+        };
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+        infectWithProbability(map, width, height, 1, 1, 80, 2345);
+        cout << "========================" << endl;
+        printMap(map, width, height);
+        cout << "========================" << endl;
+    }
+
+    return 0;
+}
